@@ -20,7 +20,13 @@ class CompassService @Inject constructor() {
     }
 
     suspend fun getAbout(): String {
-        return client.get(ABOUT).body()
+        try {
+            val result: String = client.get(ABOUT).body()
+            CompassServiceCache.saveAboutResponse(result)
+            return result
+        } catch (e: Exception) {
+            return CompassServiceCache.getAboutResponse() ?: e.message ?: throw e
+        }
     }
 
     companion object {

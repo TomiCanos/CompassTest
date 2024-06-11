@@ -22,7 +22,8 @@ class MainActivity : ComponentActivity() {
             MainContent(
                 everyTenthChar = everyTenthChar,
                 totalWordsAmount = totalWordsCounter,
-                onFooterClick = { viewModel.playCoroutines() }
+                onPlayCoroutinesClicked = { viewModel.playCoroutines() },
+                onRestoreDefaultValuesClicked = { viewModel.restoreDefaultValues() }
             )
         }
     }
