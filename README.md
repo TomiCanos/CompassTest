@@ -1,2 +1,2 @@
 # CompassTest
-![totalWordsCounter](https://github.com/TomiCanos/CompassTest/assets/36737590/3a03150a-cd43-461c-956c-2d237caf6b90)
+![asd](https://github.com/TomiCanos/CompassTest/assets/36737590/2e3096a0-125d-44db-a829-540f2bf1baa3)
