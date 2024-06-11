@@ -17,7 +17,12 @@ import androidx.compose.ui.unit.dp
 import com.example.compasstest.ui.theme.CompassTestTheme
 
 @Composable
-fun MainContent(everyTenthChar: String, totalWordsAmount: Int, onFooterClick: () -> Unit) {
+fun MainContent(
+    everyTenthChar: String,
+    totalWordsAmount: Int,
+    onPlayCoroutinesClicked: () -> Unit = {},
+    onRestoreDefaultValuesClicked: () -> Unit = {}
+) {
     CompassTestTheme {
         Column(
             modifier = Modifier
@@ -41,10 +46,12 @@ fun MainContent(everyTenthChar: String, totalWordsAmount: Int, onFooterClick: ()
                 text = "Total words: $totalWordsAmount",
                 modifier = Modifier
                     .padding(16.dp)
-                    .padding(top = 0.dp)
             )
 
-            Footer(onFooterClick)
+            Footer(
+                onPlayCoroutinesClicked = onPlayCoroutinesClicked,
+                onRestoreDefaultValuesClicked = onRestoreDefaultValuesClicked
+            )
         }
     }
 }
@@ -55,5 +62,5 @@ fun MainContentPreview() {
     MainContent(
         everyTenthChar = "This is a preview",
         totalWordsAmount = 100
-    ) {}
+    )
 }

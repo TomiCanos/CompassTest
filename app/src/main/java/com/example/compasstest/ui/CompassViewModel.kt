@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.compasstest.domain.GetAmountOfWords
 import com.example.compasstest.domain.GetEveryTenthCharacter
+import com.example.compasstest.ui.theme.everyTenthCharDefaultText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,11 +18,11 @@ class CompassViewModel @Inject constructor(
     private val getAmountOfWords: GetAmountOfWords
 ) : ViewModel() {
     private val _everyTenthChar =
-        MutableStateFlow("This will display every tenth character from the about page")
+        MutableStateFlow(everyTenthCharDefaultText)
     val everyTenthChar = _everyTenthChar.asStateFlow()
 
     private val _totalWordsCounter =
-        MutableStateFlow(0)
+        MutableStateFlow(COUNTER_DEFAULT_VALUE)
     val totalWordsCounter = _totalWordsCounter.asStateFlow()
 
     fun playCoroutines() {
@@ -32,5 +33,14 @@ class CompassViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             _totalWordsCounter.value = getAmountOfWords.invoke()
         }
+    }
+
+    fun restoreDefaultValues() {
+        _everyTenthChar.value = everyTenthCharDefaultText
+        _totalWordsCounter.value = COUNTER_DEFAULT_VALUE
+    }
+
+    companion object {
+        private const val COUNTER_DEFAULT_VALUE = 0
     }
 }
