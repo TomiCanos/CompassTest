@@ -16,10 +16,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            val everyTenthCharacterResponse by viewModel.response.collectAsState()
+            val everyTenthChar by viewModel.everyTenthChar.collectAsState()
+            val totalWordsCounter by viewModel.totalWordsCounter.collectAsState()
+
             MainContent(
-                firstText = everyTenthCharacterResponse,
-                onFooterClick = { viewModel.getEveryTenthCharacter() }
+                everyTenthChar = everyTenthChar,
+                totalWordsAmount = totalWordsCounter,
+                onFooterClick = { viewModel.playCoroutines() }
             )
         }
     }
