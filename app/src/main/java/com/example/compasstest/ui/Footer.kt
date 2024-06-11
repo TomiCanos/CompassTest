@@ -20,7 +20,7 @@ fun Footer(onClick: () -> Unit) {
                 .padding(16.dp),
             onClick = onClick,
         ) {
-            Text("Show every tenth character")
+            Text("Play Coroutines")
         }
     }
 }
